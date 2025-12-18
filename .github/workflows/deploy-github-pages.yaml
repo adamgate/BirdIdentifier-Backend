@@ -2,9 +2,8 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs after generate-api-docs completes successfully
   workflow_run:
-    workflows: ['generate-api-docs']
+    workflows: ['Generate API Docs']
     types: [completed]
     branches: 
       - master
