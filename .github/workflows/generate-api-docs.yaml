@@ -1,0 +1,39 @@
+# Generates API documentation from the OpenAPI spec
+name: Generate API Docs
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.0' # Use a recent Node.js version
+
+      - name: Install Widdershins
+        run: npm install -g widdershins
+
+      - name: Convert OpenAPI to Markdown
+        run: widdershins BirdIdentifierBackend.json -o api-doc.md
+        # Replace 'openapi.yaml' with the path to your spec file
+        # The output file 'api-doc.md' will be created
+
+      - name: Commit and push generated Markdown (Optional)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Docs: Generate API documentation from OpenAPI spec'
+          files: api-doc.md
+        

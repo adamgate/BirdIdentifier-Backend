@@ -1,8 +1,11 @@
+using System.Text;
+
 using BirdIdentifierBackend.Models;
 using BirdIdentifierBackend.Utils;
+
 using Microsoft.AspNetCore.Mvc;
+
 using Newtonsoft.Json;
-using System.Text;
 
 namespace BirdIdentifierBackend.Controllers
 {
@@ -23,7 +26,7 @@ namespace BirdIdentifierBackend.Controllers
         {
             var fileExtension = Path.GetExtension(image.FileName).ToLowerInvariant();
             if (!AcceptableImageFormats.Contains(fileExtension))
-            { 
+            {
                 return BadRequest("Incorrect file type.");
             }
 
@@ -85,7 +88,7 @@ namespace BirdIdentifierBackend.Controllers
                 };
             }
             else
-            { 
+            {
                 return BadRequest("Version number not recognized.");
             }
 
@@ -101,7 +104,7 @@ namespace BirdIdentifierBackend.Controllers
         {
             var fileExtension = Path.GetExtension(image.FileName).ToLowerInvariant();
             if (!AcceptableImageFormats.Contains(fileExtension))
-            { 
+            {
                 return BadRequest("Incorrect file type.");
             }
 
@@ -146,7 +149,7 @@ namespace BirdIdentifierBackend.Controllers
                 };
             }
             else
-            { 
+            {
                 return BadRequest("Version number not recognized.");
             }
 
@@ -155,7 +158,7 @@ namespace BirdIdentifierBackend.Controllers
 
         private decimal GetHighestScore(float[] scores)
             => decimal.Round((decimal)scores.Max() * 100, 2);
-        
+
         private string GenerateLearnMoreLink(string bird)
         {
             var encodedBirdName = new StringBuilder()
