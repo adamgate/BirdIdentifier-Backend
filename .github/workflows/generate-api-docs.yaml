@@ -27,7 +27,7 @@ jobs:
         run: npm install -g widdershins
 
       - name: Convert OpenAPI to Markdown
-        run: widdershins BirdIdentifierBackend.json -o api-doc.md
+        run: widdershins ./BirdIdentifierBackend.json -o api-doc.md
         # Replace 'openapi.yaml' with the path to your spec file
         # The output file 'api-doc.md' will be created
 
