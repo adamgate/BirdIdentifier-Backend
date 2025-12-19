@@ -18,8 +18,8 @@ Matches any image (person, object, etc.) to the bird species it most closely res
 
 Both endpoints accept JPG/PNG images and support optional version parameter (1 or 2) to select the ML model.
 ### Example Response:
-```
-json{
+``` json
+{
   "Name": "northern-cardinal",
   "Timestamp": "2025-12-18T10:30:00",
   "Score": 95.43,
